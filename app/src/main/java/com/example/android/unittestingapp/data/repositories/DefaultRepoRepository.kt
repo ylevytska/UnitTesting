@@ -23,7 +23,6 @@ class DefaultRepoRepository @Inject constructor(
                     repoLocalDataSource.insertAllRepos(networkResponse.data)
                 }
                 is Result.Error -> return networkResponse
-
             }
         }
         return repoLocalDataSource.getReposForUser()

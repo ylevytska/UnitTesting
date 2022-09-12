@@ -10,7 +10,7 @@ object RepoNetworkMapper : EntityMapper<ReposNetworkEntity, Repo> {
             title = entity.repoName,
             desc = entity.repoDesc ?: "No description",
             url = entity.repoUrl,
-            owner = entity.owner
+            owner = entity.repoOwner
         )
     }
 

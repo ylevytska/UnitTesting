@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
+import com.example.android.unittestingapp.data.models.Owner
 import com.example.android.unittestingapp.data.util.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -24,6 +25,28 @@ class RepoLocalDataSourceTest {
 
     private lateinit var database: RepoDatabase
     private lateinit var repoLocalDataSource: RepoLocalDataSource
+
+    private val repoDatabaseEntity1 = RepoDatabaseEntity(
+        repoId = 1L,
+        repoName = "Name 1",
+        repoDesc = "Desc 1",
+        repoUrl = "Url 1",
+        repoOwner = Owner("Login 1", 1L))
+    private val repoDatabaseEntity2 = RepoDatabaseEntity(
+        repoId = 2L,
+        repoName = "Name 2",
+        repoDesc = "Desc 2",
+        repoUrl = "Url 2",
+        repoOwner = Owner("Login 2", 2L))
+    private val repoDatabaseEntity3 = RepoDatabaseEntity(
+        repoId = 3L,
+        repoName = "Name 3",
+        repoDesc = "Desc 3",
+        repoUrl = "Url 3",
+        repoOwner = Owner("Login 3", 3L))
+
+    private val repoEntityList =
+        listOf(repoDatabaseEntity1, repoDatabaseEntity2, repoDatabaseEntity3)
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
@@ -48,23 +71,6 @@ class RepoLocalDataSourceTest {
     @Test
     fun getReposForUser_InsertRepos_GetRepos() = runBlocking {
         // Given
-        val repoDatabaseEntity1 = RepoDatabaseEntity(
-            repoId = 1L,
-            repoName = "Name 1",
-            repoDesc = "Desc 1",
-            repoUrl = "Url 1")
-        val repoDatabaseEntity2 = RepoDatabaseEntity(
-            repoId = 2L,
-            repoName = "Name 2",
-            repoDesc = "Desc 2",
-            repoUrl = "Url 2")
-        val repoDatabaseEntity3 = RepoDatabaseEntity(
-            repoId = 3L,
-            repoName = "Name 3",
-            repoDesc = "Desc 3",
-            repoUrl = "Url 3")
-
-        val repoEntityList = listOf(repoDatabaseEntity1, repoDatabaseEntity2, repoDatabaseEntity3)
         val repos = RepoDBMapper.mapFromEntityList(repoEntityList)
         database.getRepoDao().insertAllRepos(repoEntityList)
 
@@ -79,23 +85,6 @@ class RepoLocalDataSourceTest {
     @Test
     fun deleteAllRepos_ReturnEmpty() = runBlocking {
         // Given
-        val repoDatabaseEntity1 = RepoDatabaseEntity(
-            repoId = 1L,
-            repoName = "Name 1",
-            repoDesc = "Desc 1",
-            repoUrl = "Url 1")
-        val repoDatabaseEntity2 = RepoDatabaseEntity(
-            repoId = 2L,
-            repoName = "Name 2",
-            repoDesc = "Desc 2",
-            repoUrl = "Url 2")
-        val repoDatabaseEntity3 = RepoDatabaseEntity(
-            repoId = 3L,
-            repoName = "Name 3",
-            repoDesc = "Desc 3",
-            repoUrl = "Url 3")
-
-        val repoEntityList = listOf(repoDatabaseEntity1, repoDatabaseEntity2, repoDatabaseEntity3)
         database.getRepoDao().insertAllRepos(repoEntityList)
 
         // When

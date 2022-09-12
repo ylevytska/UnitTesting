@@ -17,5 +17,5 @@ data class ReposNetworkEntity(
     val repoUrl: String,
 
     @SerializedName("owner")
-    val owner: Owner
+    val repoOwner: Owner
 )

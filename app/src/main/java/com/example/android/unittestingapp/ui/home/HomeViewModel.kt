@@ -1,6 +1,5 @@
 package com.example.android.unittestingapp.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,13 +28,12 @@ class HomeViewModel @Inject constructor(private val repoRepository: RepoReposito
         getReposForUser()
     }
 
-    fun getReposForUser(username: String = "cashed user", forcedUpdated: Boolean = false) {
+    fun getReposForUser(username: String = "default", forcedUpdated: Boolean = false) {
         _loading.postValue(true)
         viewModelScope.launch {
             when (val result = repoRepository.getReposForUser(username, forcedUpdated)) {
                 is Result.Success -> _repos.postValue(result.data)
                 is Result.Error -> {
-                    Log.i("TAG", "${result.exception.message}")
                     if (result.exception.message?.trim() == "HTTP 404") _repos.postValue(emptyList())
                     else _error.postValue(Event(result.exception.message))
                 }
