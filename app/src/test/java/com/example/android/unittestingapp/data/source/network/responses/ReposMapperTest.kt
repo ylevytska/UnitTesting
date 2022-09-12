@@ -8,7 +8,7 @@ import org.assertj.core.api.Assertions.*
 internal class ReposMapperTest {
 
     @Test
-    fun `mapFromEntity() receive RepoNetworkEntity, returns Repo`() {
+    fun `mapFromEntity() receive RepoNetworkEntity, should returns Repo`() {
         val reposNetworkEntity = ReposNetworkEntity(
             repoId = 1,
             repoName = "Name",

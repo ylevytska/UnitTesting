@@ -55,7 +55,7 @@ class CommitViewModelTest {
     }
 
     @Test
-    fun `getCommitsForRepo return commits`() {
+    fun `getCommitsForRepo should return commits`() {
         // Given
         commitViewModel.getCommitsForRepo(username, repoTitle)
 
@@ -84,7 +84,7 @@ class CommitViewModelTest {
     }
 
     @Test
-    fun `getCommitsForRepo return error`() = runBlocking {
+    fun `getCommitsForRepo should return error`() = runBlocking {
         // Given
         val mockRepository = mockk<RepoRepository>()
         coEvery { mockRepository.getCommitsForRepo(username, repoTitle) } coAnswers {

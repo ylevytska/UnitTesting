@@ -97,10 +97,7 @@ class RepoLocalDataSourceTest {
 
     @Test
     fun getReposForUser_WhenDbIsEmpty_ReturnEmpty() = runBlocking {
-        // When
         val result = repoLocalDataSource.getReposForUser() as Result.Success
-
-        // Then
         assertThat(result.data.size, `is`(0))
     }
 }

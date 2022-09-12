@@ -55,7 +55,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `getRepoForUser forceUpdate=true return updated local repos`() {
+    fun `getRepoForUser forceUpdate=true should return updated local repos`() {
         // Given
         homeViewModel.getReposForUser(forcedUpdated = true)
 
@@ -67,7 +67,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `getRepoForUser forceUpdate=false return local repos`() {
+    fun `getRepoForUser forceUpdate=false should return local repos`() {
         // Given
         homeViewModel.getReposForUser(forcedUpdated = false)
 
@@ -96,7 +96,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `getRepoForUser return error`() = runBlocking {
+    fun `getRepoForUser should return error`() = runBlocking {
         // Given
         val mockRepository = mockk<RepoRepository>()
         coEvery { mockRepository.getReposForUser(username, false) } coAnswers {

@@ -45,28 +45,42 @@ class DefaultRepoRepositoryTest {
     @Test
     fun `getReposForUser() requests remote repos, should return updated local repos`() =
         runBlocking {
+            // Given
             Mockito.`when`(remoteDataSource.getReposForUser(username))
                 .thenReturn(Result.Success(remoteRepos))
             Mockito.`when`(localDataSource.getReposForUser())
                 .thenReturn(Result.Success(remoteRepos))
+
+            // When
             val result = defaultRepoRepository.getReposForUser(username, true) as Result.Success
+
+            // Then
             assertThat(result.data, IsEqual(remoteRepos))
         }
 
     @Test
     fun `getReposForUser() requests local repos, should return local repos`() = runBlocking {
+        // Given
         Mockito.`when`(localDataSource.getReposForUser()).thenReturn(Result.Success(localRepos))
+
+        // When
         val result = defaultRepoRepository.getReposForUser(username, false) as Result.Success
+
+        // Then
         assertThat(result.data, IsEqual(localRepos))
     }
 
     @Test
     fun `getCommitsForRepo() receives username and repoTitle, should return commits`() =
         runBlocking {
+            // Given
             Mockito.`when`(remoteDataSource.getCommits(username, repoTitle))
                 .thenReturn(Result.Success(commits))
-            val result =
-                defaultRepoRepository.getCommitsForRepo(username, repoTitle) as Result.Success
+
+            // When
+            val result = defaultRepoRepository.getCommitsForRepo(username, repoTitle) as Result.Success
+
+            // Then
             assertThat(result.data, IsEqual(commits))
         }
 
