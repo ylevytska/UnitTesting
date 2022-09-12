@@ -5,7 +5,6 @@ import com.example.android.unittestingapp.data.models.Repo
 import com.example.android.unittestingapp.data.source.RepoDataSource
 import com.example.android.unittestingapp.data.source.network.responses.CommitNetworkMapper
 import com.example.android.unittestingapp.data.source.network.responses.RepoNetworkMapper
-import com.example.android.unittestingapp.data.source.network.responses.ReposNetworkEntity
 import com.example.android.unittestingapp.data.util.Result
 import javax.inject.Inject
 

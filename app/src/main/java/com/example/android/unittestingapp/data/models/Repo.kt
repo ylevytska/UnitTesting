@@ -1,8 +1,9 @@
 package com.example.android.unittestingapp.data.models
 
 data class Repo(
-    val repoId: Long,
-    val repoName: String,
-    val repoDesc: String,
-    val repoUrl: String,
+    val id: Long,
+    val title: String,
+    val desc: String,
+    val url: String,
+    val owner: Owner
 )

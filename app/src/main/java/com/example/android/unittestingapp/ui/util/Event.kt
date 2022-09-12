@@ -12,6 +12,4 @@ class Event<T>(private val data: T) {
             data
         }
     }
-
-    fun peekContent() = data
 }

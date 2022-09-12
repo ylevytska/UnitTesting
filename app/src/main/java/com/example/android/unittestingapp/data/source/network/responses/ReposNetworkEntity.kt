@@ -1,5 +1,6 @@
 package com.example.android.unittestingapp.data.source.network.responses
 
+import com.example.android.unittestingapp.data.models.Owner
 import com.google.gson.annotations.SerializedName
 
 data class ReposNetworkEntity(
@@ -14,4 +15,7 @@ data class ReposNetworkEntity(
 
     @SerializedName("url")
     val repoUrl: String,
+
+    @SerializedName("owner")
+    val owner: Owner
 )

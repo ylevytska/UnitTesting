@@ -16,11 +16,11 @@ class RepoAdapter : RecyclerView.Adapter<RepoAdapter.RepoViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(repo: Repo) {
-            binding.repoName.text = repo.repoName
-            binding.repoDesc.text = repo.repoDesc
+            binding.repoName.text = repo.title
+            binding.repoDesc.text = repo.desc
 
             binding.root.setOnClickListener {
-                onRepoClickListener.onClick()
+                onRepoClickListener.onClick(repo)
             }
         }
     }
@@ -44,5 +44,5 @@ class RepoAdapter : RecyclerView.Adapter<RepoAdapter.RepoViewHolder>() {
 }
 
 interface OnRepoClickListener {
-    fun onClick()
+    fun onClick(repo: Repo)
 }

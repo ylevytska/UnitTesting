@@ -17,9 +17,9 @@ internal class ReposMapperTest {
 
         val repo = RepoNetworkMapper.mapFromEntity(reposNetworkEntity)
 
-        assertThat(repo.repoId).isEqualTo(reposNetworkEntity.repoId)
-        assertThat(repo.repoName).isEqualTo(reposNetworkEntity.repoName)
-        assertThat(repo.repoDesc).isEqualTo(reposNetworkEntity.repoDesc)
-        assertThat(repo.repoUrl).isEqualTo( reposNetworkEntity.repoUrl)
+        assertThat(repo.id).isEqualTo(reposNetworkEntity.repoId)
+        assertThat(repo.title).isEqualTo(reposNetworkEntity.repoName)
+        assertThat(repo.desc).isEqualTo(reposNetworkEntity.repoDesc)
+        assertThat(repo.url).isEqualTo( reposNetworkEntity.repoUrl)
     }
 }

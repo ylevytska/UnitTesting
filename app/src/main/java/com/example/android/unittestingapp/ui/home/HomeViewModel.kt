@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repoRepository: RepoRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val repoRepository: RepoRepository) : ViewModel() {
 
     private val _repos = MutableLiveData<List<Repo>>()
     val repos: LiveData<List<Repo>> = _repos

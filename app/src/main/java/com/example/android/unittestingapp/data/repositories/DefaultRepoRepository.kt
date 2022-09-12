@@ -1,6 +1,5 @@
 package com.example.android.unittestingapp.data.repositories
 
-import android.util.Log
 import com.example.android.unittestingapp.data.models.Commit
 import com.example.android.unittestingapp.data.models.Repo
 import com.example.android.unittestingapp.data.source.RepoDataSource
